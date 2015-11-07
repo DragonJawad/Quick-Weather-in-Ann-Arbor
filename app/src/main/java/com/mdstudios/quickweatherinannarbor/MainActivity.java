@@ -53,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
             String jsonStr = sh.makeServiceCall(sourceUrl, ServiceHandler.GET);
             try {
                 JSONObject jsonObj = new JSONObject(jsonStr);
-                mResult = "Temperature: " + jsonObj.getJSONObject("main").getDouble("temp");
+                mResult = "Temperature: " +
+                        (jsonObj.getJSONObject("main").getDouble("temp")*9/5-459.67);
             } catch (JSONException e) {
                 e.printStackTrace();
                 mResult = "Failed to get the temp";
